@@ -4,7 +4,7 @@ queue_manager = 'QM.01'
 channel = 'C.TESTE'
 host = '192.168.68.119'
 port = '1414'
-queue_name = 'QL.REPORT'
+queue_name = 'QL.TESTE'
 conn_info = '%s(%s)' % (host, port)
 
 qmgr = pymqi.connect(queue_manager, channel, conn_info)
