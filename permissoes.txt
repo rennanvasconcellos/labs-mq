@@ -1,4 +1,4 @@
-#### Permissões dev
+#### Permissões ADMIN
 
 # Esses comandos fornecem ao grupo 'mqm-fulano' acesso administrativo total no IBM MQ for UNIX e Linux.
 setmqaut -m QM.01 -t qmgr -g "mqm-fulano" +connect +inq +alladm
