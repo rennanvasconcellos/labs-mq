@@ -21,6 +21,7 @@ Sequência de passos para seguir no laboratório
 - Criar um aliás apontando para tópico 
 - Alterar o alias para outra fila
 - Configuração TLS
+- Executar backup do IBM MQ
 
 ### Lab 1: Instalação e Configuração Inicial do IBM MQ
 
