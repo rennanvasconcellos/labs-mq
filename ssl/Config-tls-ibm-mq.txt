@@ -1,0 +1,16 @@
+### Configurando conexão TLS com IBM
+
+- Primeiro é necessário gerar o repositório de certificados (CMS) utilizado pelo IBM MQ
+
+- A instalação do IBM MQ traz o utilitário Java para a criação deste repositório/certificados
+
+- Este utilitário fica localizado no diretório de instalação do IBM MQ no Windows no seguinte path:C:\Program Files\IBM\MQ\java\jre\bin
+
+- No processo de geração do certificao escolha a label seguindo este padrão de nome: "ibmwebspheremq_xxx"
+
+- No momento em que criar a senha para a geração do key.db deixe selecionado a opção "Guardar senha em um arquivo"
+
+- Verifique se foram gerados três arquivos: key.kdb, key.rdb e key.sth
+
+- Estes três arquivos devem ser copiados para dentro do diretório de carregamento do IBM MQ: /var/mqm/qmgrs/$QMGR/ssl/
+
