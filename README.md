@@ -172,6 +172,12 @@ DEFINE PROCESS('MY.PROCESS') APPLICID('/path/to/application')
 runmqtrm -m QM.01 -q INIT.QUEUE
 
 
+### Lab 5: Perssionamento básico no IBM MQ
+
+
+
+
+
 	4.	Teste do Trigger:
 	•	Coloque uma mensagem na fila APP.QUEUE e verifique se o aplicativo definido no processo é executado automaticamente:
 
