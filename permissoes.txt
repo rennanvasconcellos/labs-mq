@@ -1,0 +1,56 @@
+#### Permissões dev
+
+# Esses comandos fornecem ao grupo 'mqm-fulano' acesso administrativo total no IBM MQ for UNIX e Linux.
+setmqaut -m QM.01 -t qmgr -g "mqm-fulano" +connect +inq +alladm
+setmqaut -m QM.01 -n "**" -t q -g "mqm-fulano" +alladm +crt +browse
+setmqaut -m QM.01 -n "**" -t topic -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -n "**" -t channel -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -n "**" -t process -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -n "**" -t namelist -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -n "**" -t authinfo -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -n "**" -t clntconn -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -n "**" -t listener -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -n "**" -t service -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -n "**" -t comminfo -g "mqm-fulano" +alladm +crt
+
+# Os seguintes comandos fornecem acesso administrativo para o MQ Explorer.
+setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g "mqm-fulano" +dsp +inq +get
+setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "mqm-fulano" +dsp +inq +put
+
+
+##### Permissões DEV
+
+# Esses comandos fornecem ao grupo 'grp-mqm-dev' acesso somente leitura no IBM MQ for UNIX e Linux.
+
+setmqaut -m QM.01 -t qmgr -g "grp-mqm-dev" +connect +inq +dsp
+setmqaut -m QM.01 -n "**" -t q -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t topic -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t channel -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t process -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t namelist -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t authinfo -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t clntconn -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t listener -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t service -g "grp-mqm-dev" +dsp
+setmqaut -m QM.01 -n "**" -t comminfo -g "grp-mqm-dev" +dsp
+
+# Os seguintes comandos fornecem acesso administrativo para o MQ Explorer.
+setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g "grp-mqm-dev" +dsp +inq +get
+setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "grp-mqm-dev" +dsp +inq +put
+
+
+##### Permissões APP
+
+setmqaut -m QM.01 -n "SYSTEM.AMQP.COMMAND.QUEUE" -t q -p "mqm-app-b" -remove
+setmqaut -m QM.01 -n "SYSTEM.AMQP.COMMAND.QUEUE" -t q -p "mqm-app-b" +chg +clr +dlt +dsp +passall +passid +setall +setid +browse +get +inq +put +set
+
+setmqaut -m QM.01 -n "SYSTEM.MQEXPLORER.REPLY.MODEL" -t q -g "mqm-app-b" +chg +clr +dlt +dsp +passall +passid +setall +setid +browse +get +inq +put +set
+
+setmqaut -m QM.01 -t qmgr -p "mqm-app-b" -all
+setmqaut -m QM.01 -t qmgr -p "mqm-app-b" +dsp +setall +setid +altusr +connect +inq +set +system
+
+setmqaut -m QM.01 -n "QL.APP.B" -t q -g "mqm-app-b" -remove
+setmqaut -m QM.01 -n "QL.APP.B" -t q -g "mqm-app-b" +dsp +passall +passid +setall +setid +browse +get +inq +put +set
+
+
+
