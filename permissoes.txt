@@ -15,9 +15,6 @@ setmqaut -m QM.01 -n "**" -t comminfo -g "grp-admin" +alladm +crt
 setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g "grp-mqm-dev" +dsp +inq +get
 setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "grp-mqm-dev" +dsp +inq +put
 
-
-
-
 ##### Permissões DEV
 
 # Esses comandos fornecem ao grupo 'grp-mqm-dev' acesso somente leitura no IBM MQ for UNIX e Linux.
@@ -54,3 +51,12 @@ setmqaut -m QM.01 -n "QL.APP.B" -t q -g "mqm-app-b" +dsp +passall +passid +setal
 
 
 
+#### Alterando o qmgr para utilizado o idp Linux local
+
+DEFINE AUTHINFO(IDPLINUXLAB) AUTHTYPE(IDPWOS) ADOPTCTX(YES)
+ALTER QMGR CONNAUTH('IDPLINUXLAB') CHLAUTH(ENABLED)
+
+# Aplicando configuraçõe em definitivo
+
+REFRESH SECURITY TYPE(CONNAUTH)
+REFRESH SECURITY
