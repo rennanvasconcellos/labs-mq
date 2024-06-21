@@ -12,8 +12,8 @@ setmqaut -m QM.01 -n "**" -t clntconn -g "grp-admin" +alladm +crt
 setmqaut -m QM.01 -n "**" -t listener -g "grp-admin" +alladm +crt
 setmqaut -m QM.01 -n "**" -t service -g "grp-admin" +alladm +crt
 setmqaut -m QM.01 -n "**" -t comminfo -g "grp-admin" +alladm +crt
-setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g ""grp-admin" +dsp +inq +get
-setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g ""grp-admin" +dsp +inq +put
+setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g "grp-admin" +dsp +inq +get
+setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "grp-admin" +dsp +inq +put
 
 ##### Permissões DEV
 
