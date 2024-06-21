@@ -19,21 +19,19 @@ setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "grp-admin" +dsp +inq +p
 
 # Esses comandos fornecem ao grupo 'grp-mqm-dev' acesso somente leitura no IBM MQ for UNIX e Linux.
 
-setmqaut -m QM.01 -t qmgr -g "grp-mqm-dev" +connect +inq +dsp
-setmqaut -m QM.01 -n "**" -t q -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t topic -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t channel -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t process -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t namelist -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t authinfo -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t clntconn -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t listener -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t service -g "grp-mqm-dev" +dsp
-setmqaut -m QM.01 -n "**" -t comminfo -g "grp-mqm-dev" +dsp
-
-# Os seguintes comandos fornecem acesso administrativo para o MQ Explorer.
-setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g "grp-mqm-dev" +dsp +inq +get
-setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "grp-mqm-dev" +dsp +inq +put
+setmqaut -m QM.01 -t qmgr -g "grp-dev" +connect +inq +dsp
+setmqaut -m QM.01 -n "**" -t q -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t topic -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t channel -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t process -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t namelist -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t authinfo -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t clntconn -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t listener -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t service -g "grp-dev" +dsp
+setmqaut -m QM.01 -n "**" -t comminfo -g "grp-dev" +dsp
+setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g "grp-dev" +dsp +inq +get
+setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "grp-dev" +dsp +inq +put
 
 
 ##### Permissões APP
