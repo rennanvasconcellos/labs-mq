@@ -1,21 +1,21 @@
 #### Permissões ADMIN
 
 # Esses comandos fornecem ao grupo 'mqm-fulano' acesso administrativo total no IBM MQ for UNIX e Linux.
-setmqaut -m QM.01 -t qmgr -g "mqm-fulano" +connect +inq +alladm
-setmqaut -m QM.01 -n "**" -t q -g "mqm-fulano" +alladm +crt +browse
-setmqaut -m QM.01 -n "**" -t topic -g "mqm-fulano" +alladm +crt
-setmqaut -m QM.01 -n "**" -t channel -g "mqm-fulano" +alladm +crt
-setmqaut -m QM.01 -n "**" -t process -g "mqm-fulano" +alladm +crt
-setmqaut -m QM.01 -n "**" -t namelist -g "mqm-fulano" +alladm +crt
-setmqaut -m QM.01 -n "**" -t authinfo -g "mqm-fulano" +alladm +crt
-setmqaut -m QM.01 -n "**" -t clntconn -g "mqm-fulano" +alladm +crt
-setmqaut -m QM.01 -n "**" -t listener -g "mqm-fulano" +alladm +crt
-setmqaut -m QM.01 -n "**" -t service -g "mqm-fulano" +alladm +crt
-setmqaut -m QM.01 -n "**" -t comminfo -g "mqm-fulano" +alladm +crt
+setmqaut -m QM.01 -t qmgr -g "grp-admin" +connect +inq +alladm
+setmqaut -m QM.01 -n "**" -t q -g "grp-admin" +alladm +crt +browse
+setmqaut -m QM.01 -n "**" -t topic -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n "**" -t channel -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n "**" -t process -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n "**" -t namelist -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n "**" -t authinfo -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n "**" -t clntconn -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n "**" -t listener -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n "**" -t service -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n "**" -t comminfo -g "grp-admin" +alladm +crt
+setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g "grp-mqm-dev" +dsp +inq +get
+setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "grp-mqm-dev" +dsp +inq +put
 
-# Os seguintes comandos fornecem acesso administrativo para o MQ Explorer.
-setmqaut -m QM.01 -n SYSTEM.MQEXPLORER.REPLY.MODEL -t q -g "mqm-fulano" +dsp +inq +get
-setmqaut -m QM.01 -n SYSTEM.ADMIN.COMMAND.QUEUE -t q -g "mqm-fulano" +dsp +inq +put
+
 
 
 ##### Permissões DEV
