@@ -1,8 +1,14 @@
 ##### LABORATÓRIO 10 -->  Criação de trigger que move msg de uma fila DLQ para a fila principal
 
+- Crie o script abaixo no caminho "/tmp/move-msg-dlq.sh". 
+
+#!/bin/bash
+
+dmpmqmsg -m QM.01 -I QL.TESTE.DLQ -o QL.TESTE
+
 - Definir o processo que será executado
 
-DEFINE PROCESS(MOVER.MSG.DLQ) APPLICID('/tmp/date.sh') APPLTYPE(UNIX)
+DEFINE PROCESS(MOVER.MSG.DLQ) APPLICID('/tmp/move-msg-dlq.sh') APPLTYPE(UNIX)
 
 - Criar fila de inicizalização
 
@@ -29,7 +35,7 @@ DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(SDR) CONNAME('localhost(1415') XMITQ(QM.02
 DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(RCVR)
 
 
-- No queue manager QM.01 crie o script "/tmp/start-channel.sh" que irá iniciar o canal sender.
+- Crie o script abaixo no caminho "/tmp/start-channel.sh". 
 
 #!/bin/bash
 QMGR="NOME_QMGR"
