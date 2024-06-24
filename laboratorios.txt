@@ -44,23 +44,25 @@ runmqtrm -m QM.01 -q INIT.QUEUE.MOVER.DLQ
 
 ########## LABORATÓRIO 11 -->  Criação de trigger que executa inicia um canal sender ao cair uma msg na fila de transmissão ##########
 
-- Crie a fila de transmissão
+- No queue manger QM.01 crie a fila de transmissão
 
 DEFINE QLOCAL(QM.02) USAGE(XMITQ)
 
-- Crie o canal de sender para o queue manager remoto
+- No queue manager crie o canal  sender para o queue manager remoto QM.02
 
 DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(SDR) CONNAME('localhost(1415') XMITQ(QM.02)
 
 - No queue manager remoto QM.02 crie o canal receptor
 
+runmqsc QM.02
+
 DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(RCVR)
 
-- No queue manageger QM.01 crie o script abaixo no caminho "/tmp/start-channel.sh". 
+- Crie o script abaixo no caminho "/tmp/start-channel.sh". 
 
 #!/bin/bash
-QMGR="NOME_QMGR"
-CHANNEL="NOME_CANAL"
+QMGR="QM.01"
+CHANNEL="C.QM.01.QM.02"
 
 runmqsc $QMGR <<EOF
 START CHANNEL($CHANNEL)
