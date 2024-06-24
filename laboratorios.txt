@@ -10,7 +10,7 @@ dmpmqmsg -m QM.01 -I QL.TESTE.DLQ -o QL.TESTE
 
 DEFINE PROCESS(MOVER.MSG.DLQ) APPLICID('/tmp/move-msg-dlq.sh') APPLTYPE(UNIX)
 
-- Criar fila de inicizalização
+- Criar fila de inicialização
 
 DEFINE QLOCAL(INIT.QUEUE.MOVER.DLQ)
 
