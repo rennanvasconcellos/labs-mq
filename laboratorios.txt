@@ -44,19 +44,29 @@ runmqtrm -m QM.01 -q INIT.QUEUE.MOVER.DLQ
 
 ########## LABORATÓRIO 11 -->  Criação de trigger que executa inicia um canal sender ao cair uma msg na fila de transmissão ##########
 
+- No queue manager QM.01 e QM.02 crie uma fila DLQ e associe ela ao seu respectivo queue manager
+
+DEFINE QLOCAL(DLQ)
+
+- Associe a fila no queue manager
+
+ALTER QMGR DEADQ(DLQ)
+
 - No queue manger QM.01 crie a fila de transmissão
 
 DEFINE QLOCAL(QM.02) USAGE(XMITQ)
 
-- No queue manager crie o canal  sender para o queue manager remoto QM.02
+- No queue manager QM.01 crie o canal  sender para o queue manager remoto QM.02
 
 DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(SDR) CONNAME('localhost(1415') XMITQ(QM.02)
 
 - No queue manager remoto QM.02 crie o canal receptor
 
-runmqsc QM.02
-
 DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(RCVR)
+
+- No queue manager QM.01 crie uma fila remota que aponta para a fila local no queue manager QM.02
+
+DEFINE QREMOTE(QR.TESTE) RQMNAME(QM.02) RNAME(QL.TESTE) XMITQ(QM.02)
 
 - Crie o script abaixo no caminho "/tmp/start-channel.sh". 
 
@@ -74,11 +84,15 @@ echo "Canal $CHANNEL iniciado!"
 
 chmod  775 /tmp/start-channel.sh
 
-- No queue manageger QM.01 crie o processo que irá executar o script de start do canal sender
+- Conecte no queue manager com o comando:
+
+runmqsc QM.01
+
+- No queue manager QM.01 crie o processo que irá executar o script de start do canal sender
 
 DEFINE PROCESS(INICIAR.CANAL) APPLICID('/tmp/start-channel.sh') APPLTYPE(UNIX)
 
-- No queue manageger QM.01 crie a fila de inicialização
+-Crie a fila de inicialização
 
 DEFINE QLOCAL(INIT.CHANNEL)
 
@@ -86,10 +100,27 @@ DEFINE QLOCAL(INIT.CHANNEL)
 
 ALTER QLOCAL(QM.02) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ('INIT.CHANNEL') PROCESS('INICIAR.CANAL')
 
+-   No queue manager QM.01 garanta que o canal sender esteja com o status inativo
+
 - No queue manageger QM.01 inicie o serviço da trigger
 
 runmqtrm -m QM.01 -q INIT.CHANNEL
 
-- No queue manageger QM.01 garanta que o canal sender esteja com o status inativo
+- Coloque uma mensagem na fila de transmissão QM.02 no queue manager QM.01. A mensagem será enviada para o QM.02 pois a trigger inicou o canal sender após a msg trafegar na fila de tranmissão. A seguinte
+saida no log deve ser observad após a inserção da msg na fila QR.TESTE
 
-- Coloque uma msg na fila de tranmissão e veja se o canal sender subiu.
+#######################################################################
+5724-H72 (C) Copyright IBM Corp. 1994, 2023.
+Starting MQSC for queue manager QM.01.
+
+
+     1 : START CHANNEL(C.QM.01.QM.02)
+AMQ8018I: Start IBM MQ channel accepted.
+One MQSC command read.
+No commands have a syntax error.
+All valid MQSC commands were processed.
+Canal C.QM.01.QM.02 iniciado!
+06/24/2024  11:30:42 PM : End of application trigger.
+###########################################################################
+
+- Confira se o canal C.QM.01.QM.02 está com status "running".
