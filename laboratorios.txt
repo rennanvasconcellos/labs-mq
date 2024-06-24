@@ -57,6 +57,10 @@ DEFINE QLOCAL(INIT.CHANNEL)
 
 ALTER QLOCAL(QM.02) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ('INIT.CHANNEL') PROCESS('INICIAR.CANAL')
 
+- Inici o serviço da trigger
+
+runmqtrm -m QM.01 -q INIT.CHANNEL
+
 - Garante que o cana sender esteja com o status inativo
 
 - Coloque uma msg na fila de tranmissão e veja se o canal sender subiu.
