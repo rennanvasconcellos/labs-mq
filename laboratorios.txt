@@ -26,6 +26,10 @@ cp /opt/mqm/web/mq/samp/configuration/basic_registry.xml /var/mqm/web/installatt
 
 - Salve o arquivo!
 
+- Reicie a console web com os comandos abaixo:
+
+endmqweb
+strmqweb
 
 
 
