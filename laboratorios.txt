@@ -1,4 +1,4 @@
-########## LABORATÓRIO 10 -->  Criação de trigger que move msg de uma fila DLQ para a fila principal ##########
+########## LABORATÓRIO 000 -->  Criação de trigger que move msg de uma fila DLQ para a fila principal ##########
 
 - Crie o script abaixo no caminho "/tmp/move-msg-dlq.sh". 
 
@@ -42,7 +42,7 @@ runmqtrm -m QM.01 -q INIT.QUEUE.MOVER.DLQ
 - Coloque novamente uma msg na fila QL.TESTE.DLQ e observe que esta novame msg será movida imediatamente para a fila QL.TESTE.DLQ e novamente a saída acima irá aparecer no log.
 
 
-########## LABORATÓRIO 11 -->  Criação de trigger que executa inicia um canal sender ao cair uma msg na fila de transmissão ##########
+########## LABORATÓRIO 000 -->  Criação de trigger que executa inicia um canal sender ao cair uma msg na fila de transmissão ##########
 
 - No queue manager QM.01 e QM.02 crie uma fila DLQ e associe ela ao seu respectivo queue manager
 
