@@ -26,9 +26,18 @@ DEFINE QLOCAL(QL.TESTE.DLQ) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ(INIT.QUEUE
 
 - Coloque uma msg de teste na fila QL.TESTE.DLQ. A msg deve ficar parada na fila .
 
-- No queue manager QM.01 inicie o serviço da trigger
-
 runmqtrm -m QM.01 -q INIT.QUEUE.MOVER.DLQ
+
+- Após ter iniciado a trigger no passo anterior repare quea msg colocada anteriormente foi movida para a fila QL.TESTE.DLQ e o promp do MQ informando a seguinte saída:
+
+################################################################
+## 5724-H72 (C) Copyright IBM Corp. 1994, 2023.                #
+## IBM MQ Queue Load/Unload Utility trigger monitor started.   #
+## Read    - Files:   0  Messages:1  Bytes:5                   #
+## Written - Files:   0  Messages:1  Bytes:5                   #
+## 06/24/2024  10:59:38 PM : End of application trigger.       #
+################################################################
+
 
 - Coloque novamente uma msg na fila QL.TESTE.DLQ e observe que tanto a primeir msg enviada quanto esta nova irão para a fila QL.TESTE.DLQ, que foi a configuração feita na trigger.
 
