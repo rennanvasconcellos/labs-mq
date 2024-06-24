@@ -22,7 +22,7 @@ DEFINE QLOCAL(QM.02) USAGE(XMITQ)
 
 - Crie o canal de sender para o queue manager remoto
 
-DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(SDR) CONNAME('localhost(1415') XMITQ(QL.TRANSMISSAO)
+DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(SDR) CONNAME('localhost(1415') XMITQ(QM.02)
 
 - No queue manager remoto crie o canal receptor
 
