@@ -6,7 +6,7 @@ strmqweb
 
 - Navegue até o diretório abaixo:
 
-/var/mqm/web/installations/Installation1/servers/mqweb
+cd /var/mqm/web/installations/Installation1/servers/mqweb
 
 - Execute um backup do arquivo atual
 
@@ -14,7 +14,7 @@ strmqweb
 
 - Execute a cópia do arquivo de exemplo de autenticação local substituindo o arquivo atual 
 
-cp /opt/mqm/web/mq/samp/configuration/basic_registry.xml /var/mqm/web/installattion1/servers/mqweb/mqwebuser.xml
+ cp /opt/mqm/web/mq/samp/configuration/basic_registry.xml /var/mqm/web/installations/Installation1/servers/mqweb/mqwebuser.xml
 
 - Edite o arquivo mqwebuser.xml
 
@@ -31,35 +31,9 @@ cp /opt/mqm/web/mq/samp/configuration/basic_registry.xml /var/mqm/web/installatt
 endmqweb
 strmqweb
 
+- Acesse a console no endereço
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://localhost:9443/ibmmq/console
 
 
 
