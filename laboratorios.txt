@@ -6,6 +6,10 @@
 
 dmpmqmsg -m QM.01 -I QL.TESTE.DLQ -o QL.TESTE
 
+- Configure permissão para execução do script 
+
+chmod  775 /tmp/move-msg-dlq.sh
+
 - Definir o processo que será executado
 
 DEFINE PROCESS(MOVER.MSG.DLQ) APPLICID('/tmp/move-msg-dlq.sh') APPLTYPE(UNIX)
@@ -17,6 +21,10 @@ DEFINE QLOCAL(INIT.QUEUE.MOVER.DLQ)
 - Definir fila DLQ utilizando a trigger/process que move a msg para para a fila principal.
 
 DEFINE QLOCAL(QL.TESTE.DLQ) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ(INIT.QUEUE.MOVER.DLQ) PROCESS(MOVER.MSG.DLQ)
+
+- Inicie o serviço da trigger
+
+runmqtrm -m QM.01 -q INIT.QUEUE.MOVER.DLQ
 
 
 
@@ -63,7 +71,7 @@ DEFINE QLOCAL(INIT.CHANNEL)
 
 ALTER QLOCAL(QM.02) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ('INIT.CHANNEL') PROCESS('INICIAR.CANAL')
 
-- Inici o serviço da trigger
+- Inicie o serviço da trigger
 
 runmqtrm -m QM.01 -q INIT.CHANNEL
 
