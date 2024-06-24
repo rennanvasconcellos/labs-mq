@@ -14,12 +14,11 @@ DEFINE QLOCAL(QL.TESTE.DLQ) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ(INIT.QUEUE
 
 
 
-##### LABORATÓRIO 11 -->  Criação de trigger que executa sobe um canal ao cair uma msg na fila
+##### LABORATÓRIO 11 -->  Criação de trigger que executa inicia um canal sender ao cair uma msg na fila de transmissão
 
 - Crie a fila de transmissão
 
 DEFINE QLOCAL(QM.02) USAGE(XMITQ)
-
 
 - Crie o canal de sender para o queue manager remoto
 
