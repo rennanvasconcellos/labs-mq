@@ -50,6 +50,14 @@ chmod  775 /tmp/start-channel.sh
 
 DEFINE PROCESS(INICIAR.CANAL) APPLICID('/tmp/start-channel.sh') APPLTYPE(UNIX)
 
-- Crie o canal sender com outro queue manager
+- Crie a fila de inicialização
 
-DEFINE
+DEFINE QLOCAL(INIT.CHANNEL)
+
+- ALTERA A FILA DE TRANMISSÃO PARA UTILIZAR A FILA DE TRIGGER
+
+ALTER QLOCAL(QM.02) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ('INIT.CHANNEL') PROCESS('INICIAR.CANAL')
+
+- Garante que o cana sender esteja com o status inativo
+
+- Coloque uma msg na fila de tranmissão e veja se o canal sender subiu.
