@@ -4,6 +4,8 @@
 
 #!/bin/bash
 
+sleep 1
+
 dmpmqmsg -m QM.01 -I QL.TESTE.DLQ -o QL.TESTE
 
 - Configure permissão para execução do script 
