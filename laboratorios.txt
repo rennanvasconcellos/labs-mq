@@ -1,4 +1,4 @@
-##### LABORATÓRIO 10 -->  Criação de trigger que move msg de uma fila DLQ para a fila principal
+########## LABORATÓRIO 10 -->  Criação de trigger que move msg de uma fila DLQ para a fila principal ##########
 
 - Crie o script abaixo no caminho "/tmp/move-msg-dlq.sh". 
 
@@ -12,25 +12,25 @@ dmpmqmsg -m QM.01 -I QL.TESTE.DLQ -o QL.TESTE
 
 chmod  775 /tmp/move-msg-dlq.sh
 
-- Definir o processo que será executado
+- No queue manageger QM.01 definir o processo que será executado
 
 DEFINE PROCESS(MOVER.MSG.DLQ) APPLICID('/tmp/move-msg-dlq.sh') APPLTYPE(UNIX)
 
-- Criar fila de inicialização
+- No queue manageger QM.01 Criar fila de inicialização
 
 DEFINE QLOCAL(INIT.QUEUE.MOVER.DLQ)
 
-- Definir fila DLQ utilizando a trigger/process que move a msg para para a fila principal.
+- No queue manageger QM.01 definir fila DLQ utilizando a trigger/process que move a msg para para a fila principal.
 
 DEFINE QLOCAL(QL.TESTE.DLQ) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ(INIT.QUEUE.MOVER.DLQ) PROCESS(MOVER.MSG.DLQ)
 
-- Inicie o serviço da trigger
+- No queue manageger QM.01 inicie o serviço da trigger
 
 runmqtrm -m QM.01 -q INIT.QUEUE.MOVER.DLQ
 
 
 
-##### LABORATÓRIO 11 -->  Criação de trigger que executa inicia um canal sender ao cair uma msg na fila de transmissão
+########## LABORATÓRIO 11 -->  Criação de trigger que executa inicia um canal sender ao cair uma msg na fila de transmissão ##########
 
 - Crie a fila de transmissão
 
@@ -40,12 +40,11 @@ DEFINE QLOCAL(QM.02) USAGE(XMITQ)
 
 DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(SDR) CONNAME('localhost(1415') XMITQ(QM.02)
 
-- No queue manager remoto crie o canal receptor
+- No queue manager remoto QM.02 crie o canal receptor
 
 DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(RCVR)
 
-
-- Crie o script abaixo no caminho "/tmp/start-channel.sh". 
+- No queue manageger QM.01 crie o script abaixo no caminho "/tmp/start-channel.sh". 
 
 #!/bin/bash
 QMGR="NOME_QMGR"
@@ -61,22 +60,22 @@ echo "Canal $CHANNEL iniciado!"
 
 chmod  775 /tmp/start-channel.sh
 
-- Cria o processo que irá executar o script de start do canal sender
+- No queue manageger QM.01 crie o processo que irá executar o script de start do canal sender
 
 DEFINE PROCESS(INICIAR.CANAL) APPLICID('/tmp/start-channel.sh') APPLTYPE(UNIX)
 
-- Crie a fila de inicialização
+- No queue manageger QM.01 crie a fila de inicialização
 
 DEFINE QLOCAL(INIT.CHANNEL)
 
-- ALTERA A FILA DE TRANMISSÃO PARA UTILIZAR A FILA DE TRIGGER
+- No queue manageger QM.01 alter a fila de transmissão para utilizar a fila de trigger
 
 ALTER QLOCAL(QM.02) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ('INIT.CHANNEL') PROCESS('INICIAR.CANAL')
 
-- Inicie o serviço da trigger
+- No queue manageger QM.01 inicie o serviço da trigger
 
 runmqtrm -m QM.01 -q INIT.CHANNEL
 
-- Garante que o cana sender esteja com o status inativo
+- No queue manageger QM.01 garanta que o canal sender esteja com o status inativo
 
 - Coloque uma msg na fila de tranmissão e veja se o canal sender subiu.
