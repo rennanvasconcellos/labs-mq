@@ -18,9 +18,11 @@ cp /opt/mqm/web/mq/samp/configuration/basic_registry.xml /var/mqm/web/installatt
 
 - Edite o arquivo mqwebuser.xml
 
-- Descomente o tag abaixo:
+- Descomente as tags abaixo:
 
  <variable name="httpHost" value="*"/>
+
+ <variable name="httpsPort" value="9443"/>
 
 - Salve o arquivo!
 
