@@ -16,17 +16,21 @@ DEFINE QLOCAL(QL.TESTE.DLQ) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ(INIT.QUEUE
 
 ##### LABORATÓRIO 11 -->  Criação de trigger que executa sobe um canal ao cair uma msg na fila
 
-- Crie a fila de tranmissão
+- Crie a fila de transmissão
 
 DEFINE QLOCAL(QM.02) USAGE(XMITQ)
 
+
+- Crie o canal de sender para o queue manager remoto
+
 DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(SDR) CONNAME('localhost(1415') XMITQ(QL.TRANSMISSAO)
 
+- No queue manager remoto crie o canal receptor
+
+DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(RCVR)
 
 
-
-
-- Crie o script "/tmp/start-channel.sh" que irá iniciar o canal sender.
+- No queue manager QM.01 crie o script "/tmp/start-channel.sh" que irá iniciar o canal sender.
 
 #!/bin/bash
 QMGR="NOME_QMGR"
