@@ -1,0 +1,51 @@
+##### LABORATÓRIO 10 -->  Criação de trigger que move msg de uma fila DLQ para a fila principal
+
+- Definir o processo que será executado
+
+DEFINE PROCESS(MOVER.MSG.DLQ) APPLICID('/tmp/date.sh') APPLTYPE(UNIX)
+
+- Criar fila de inicizalização
+
+DEFINE QLOCAL(INIT.QUEUE.MOVER.DLQ)
+
+- Definir fila DLQ utilizando a trigger/process que move a msg para para a fila principal.
+
+DEFINE QLOCAL(QL.TESTE.DLQ) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ(INIT.QUEUE.MOVER.DLQ) PROCESS(MOVER.MSG.DLQ)
+
+
+
+##### LABORATÓRIO 11 -->  Criação de trigger que executa sobe um canal ao cair uma msg na fila
+
+- Crie a fila de tranmissão
+
+DEFINE QLOCAL(QM.02) USAGE(XMITQ)
+
+DEFINE CHANNEL(C.QM.01.QM.02) CHLTYPE(SDR) CONNAME('localhost(1415') XMITQ(QL.TRANSMISSAO)
+
+
+
+
+
+- Crie o script "/tmp/start-channel.sh" que irá iniciar o canal sender.
+
+#!/bin/bash
+QMGR="NOME_QMGR"
+CHANNEL="NOME_CANAL"
+
+runmqsc $QMGR <<EOF
+START CHANNEL($CHANNEL)
+EOF
+
+echo "Canal $CHANNEL iniciado!"
+
+- Configure a permissão de execução para o script
+
+chmod  775 /tmp/start-channel.sh
+
+- Cria o processo que irá executar o script de start do canal sender
+
+DEFINE PROCESS(INICIAR.CANAL) APPLICID('/tmp/start-channel.sh') APPLTYPE(UNIX)
+
+- Crie o canal sender com outro queue manager
+
+DEFINE
