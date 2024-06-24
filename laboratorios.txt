@@ -96,7 +96,7 @@ DEFINE PROCESS(INICIAR.CANAL) APPLICID('/tmp/start-channel.sh') APPLTYPE(UNIX)
 
 DEFINE QLOCAL(INIT.CHANNEL)
 
-- No queue manageger QM.01 alter a fila de transmissão para utilizar a fila de trigger
+- No queue manageger QM.01 altere a fila de transmissão para utilizar a fila de trigger
 
 ALTER QLOCAL(QM.02) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ('INIT.CHANNEL') PROCESS('INICIAR.CANAL')
 
@@ -106,7 +106,7 @@ ALTER QLOCAL(QM.02) TRIGGER TRIGTYPE(EVERY) TRIGDPTH(1) INITQ('INIT.CHANNEL') PR
 
 runmqtrm -m QM.01 -q INIT.CHANNEL
 
-- Coloque uma mensagem na fila de transmissão QM.02 no queue manager QM.01. A mensagem será enviada para o QM.02 pois a trigger inicou o canal sender após a msg trafegar na fila de tranmissão. A seguinte
+- Coloque uma mensagem na fila remota QR.TESTE no queue manager QM.01. A mensagem será enviada para o QM.02 pois a trigger inicou o canal sender após a msg trafegar na fila de transmissão. A seguinte
 saida no log deve ser observad após a inserção da msg na fila QR.TESTE
 
 #######################################################################
