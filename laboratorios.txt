@@ -2,7 +2,25 @@
 
 - Abra uma sessão ssh e utilize o app de teste para assinar o tópico TP.TESTE
 
-- Execute o clone do projeto no github do instrutor:
+- Execute o app de teste de leitura de tópico
+
+python3 assinatura-topico-sem-persistente.py
+
+- Abra uma outra sessão ssh e utilize o app de teste para publica no tópico TP.TESTE
+
+ python3 envio-topico.py
+
+- Verique no app de este de assinatura se a msg foi recebida corretamente
+
+- No MQ Explorer navegue até "Assinaturas"
+
+- Execute novamente o app de teste de assinatura "python3 assinatura-topico-sem-persistente.py" e atualize a tela de "Assinaturas" no IBM MQ Explorer
+
+- Deve aparecer uma assinatura chamada "AssinaturaSemPersistencia". 
+
+- Esta informaçao deve durar 10s, que é o tempo que o assinante fica na fila assinando.
+
+
 
 
 
