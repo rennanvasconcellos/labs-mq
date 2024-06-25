@@ -1,3 +1,34 @@
+########## LABORATÓRIO 000 -->  Configurando umq fila para assinar um tópico.
+
+- Crie uma fila chamada QL.TESTE
+
+DEFINE QLOCAL(QL.TESTE)
+
+- Crie um tópico chamado TP.TESTE
+
+DEFINE TOPIC(TP.TESTE) TOPICSTR(TP.TESTE)
+
+- Crie a assinatura chamada QL.TESTE assinando o tópico TP.TESTE
+
+DEFINE SUB(QL.TESTE) TOPICSTR(TP.TESTE) DEST(QL.TESTE)
+
+- Abra uma assinatura de teste no tópico TP.TESTE através do IBM MQ Explorer
+
+ - Botão direto no tópico e escolha a opção "Testar assinatura"
+
+- Ainda no MQ Explorer abra um teste de publicação no tópico TP.TESTE
+
+- Botão direto no tópico e escolha a opção "Testar publicação"
+
+- Coloque uma msg de teste
+
+- Irá perceber que a fila QL.TESTE recebeu a msg publica no tópico devido a configuração da assintatura
+
+- Também irá observar que 
+
+
+
+
 ########## LABORATÓRIO 000 -->  Configuração da console web do IBM MQ
 
 - Inicie o serviço da console web
