@@ -10,9 +10,7 @@ queue_manager = 'QM.01'
 channel = 'C.TESTE'
 host = 'localhost'
 port = '1414'
-topic_string = '#'
-msg = 'Mensagem modelo topico'
-msg2 = msg.encode('utf-8')
+topic_string = 'TP.TESTE/TP.TESTE'
 conn_info = '%s(%s)' % (host, port)
 
 qmgr = pymqi.QueueManager(None)
