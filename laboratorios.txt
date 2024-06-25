@@ -1,4 +1,4 @@
-########## LABORATÓRIO 000 -->  Configurando umq fila para assinar um tópico.
+########## LABORATÓRIO 000 -->  Configurando uma fila para assinar um tópico.
 
 - Crie uma fila chamada QL.TESTE
 
