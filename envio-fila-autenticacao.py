@@ -2,7 +2,7 @@ import pymqi
 
 queue_manager = 'QM.01'
 channel = 'C.TESTE'
-host = '192.168.68.119'
+host = 'localhost'
 port = '1414'
 queue_name = 'QL.APP.B'
 message = 'Hello from Python!'
