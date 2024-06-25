@@ -10,7 +10,7 @@ python3 assinatura-topico-sem-persistente.py
 
  python3 envio-topico.py
 
-- Verique no app de este de assinatura se a msg foi recebida corretamente
+- Verique no app de teste de assinatura se a msg foi recebida corretamente
 
 - No MQ Explorer navegue até "Assinaturas"
 
@@ -18,11 +18,9 @@ python3 assinatura-topico-sem-persistente.py
 
 - Deve aparecer uma assinatura chamada "AssinaturaSemPersistencia". 
 
-- Esta informaçao deve durar 10s, que é o tempo que o assinante fica na fila assinando.
+- Esta informaçao deve durar 10s, que é o tempo que o assinante.
 
 - Atualize novamente a tela de "assinaturas" e irá observar que a assinatura "AssinaturaSemPersistencia" não está mais disponivel
-
-
 
 
 
@@ -42,11 +40,16 @@ python3 assinatura-topico-persistente.py
 
 - No MQ Explorer navegue até "Assinaturas"
 
-- Execute novamente o app de teste de assinatura "python3 assinatura-topico-sem-persistente.py" e atualize a tela de "Assinaturas" no IBM MQ Explorer
+- Execute novamente o app de teste de assinatura "python3 assinatura-topico-persistente.py" e atualize a tela de "Assinaturas" no IBM MQ Explorer
 
-- Deve aparecer uma assinatura chamada "AssinaturaSemPersistencia". 
+- Deve aparecer uma assinatura chamada "AssinaturaPersistencia". 
 
-- Esta informaçao deve durar 10s, que é o tempo que o assinante fica na fila assinando.
+- Esta informaçao deve persistir mesmo que que a aplicação assinante desconecte do do tópico.
+
+- Expiremente agora enviar 3 mensagens para o tópico com o assinante desconectado
+
+- Execute novamente o app de teste e vai observar que a cada vez que é executado este irá processar as três msg que foram publicadas no tópico no momento em que o assinante estava desconectado.
+
 
 
 ########## LABORATÓRIO 000 -->  Configurando uma fila para assinar um tópico.
