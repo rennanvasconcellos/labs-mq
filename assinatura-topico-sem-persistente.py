@@ -30,7 +30,7 @@ get_opts = pymqi.GMO(
 get_opts['WaitInterval'] = 10000
 
 data = sub.get(None, pymqi.md(), get_opts)
-logging.info('Here is the received data: [%s]' % data)
+logging.info('Dados recebidos! [%s]' % data)
 
 #sub.close(sub_close_options=pymqi.CMQC.MQCO_KEEP_SUB, close_sub_queue=True)
 sub.close()
