@@ -2,7 +2,7 @@ import pymqi
 
 queue_manager = 'QM.01'
 channel = 'C.TESTE'
-host = '192.168.68.119'
+host = 'QL.TESTE'
 port = '1414'
 queue_name = 'QL.TESTE'
 conn_info = '%s(%s)' % (host, port)
