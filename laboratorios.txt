@@ -24,7 +24,8 @@ DEFINE SUB(QL.TESTE) TOPICSTR(TP.TESTE) DEST(QL.TESTE)
 
 - Irá perceber que a fila QL.TESTE recebeu a msg publica no tópico devido a configuração da assintatura
 
-- Também irá observar que 
+- Também irá observar que o "Teste de assinatura" também recebeu a msg do tópico, pois este simula uma outra aplicação que estava assinando o tópico, sou seja,
+temos dois assinantes de tópico, a fila QL.TESTE e uma aplicação assinando diretamente o tópico.
 
 
 
