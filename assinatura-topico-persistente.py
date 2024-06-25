@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 
 queue_manager = 'QM.01'
 channel = 'C.TESTE'
-host = '192.168.68.119'
+host = 'localhost'
 port = '1414'
 topic_string = '#'
 msg = 'Mensagem modelo topico'
