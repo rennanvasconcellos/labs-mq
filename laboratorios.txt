@@ -1,3 +1,20 @@
+########## LABORATÓRIO 000 -->  Enviando msg para topico e validando as informações chegando no tópico com uma assinatura sem persistência.
+
+- Abra uma sessão ssh e utilize o app de teste para assinar o tópico TP.TESTE
+
+- Execute o clone do projeto no github do instrutor:
+
+
+
+
+
+- Entre no diretório
+
+/opt/labs/labs-mq
+
+- Execute o co
+
+
 ########## LABORATÓRIO 000 -->  Configurando uma fila para assinar um tópico.
 
 - Crie uma fila chamada QL.TESTE
